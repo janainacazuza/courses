@@ -1,4 +1,5 @@
 from evaluation import Evaluation
+from modelos.menu.menu_item import MenuItem
 class Restaurant:
     """Class to represent a restaurant."""
     restaurants = []
@@ -13,6 +14,7 @@ class Restaurant:
         self._category = category.upper()
         self._active = False
         self._evaluation = []
+        self._menu = []
         Restaurant.restaurants.append(self)
     
     def __str__(self):
@@ -57,3 +59,25 @@ class Restaurant:
         score_number = len(self._evaluation)
         average = round(sum_scores / score_number, 1)
         return average 
+    
+    # def add_drink_menu(self, drink):
+    #     """Method to add a drink to the menu.
+    #     Inputs:
+    #         drink: object
+    #     """
+    #     self._menu.append(self,drink)    
+
+    # def add_plate_menu(self, plate):
+    #     """Method to add a plate to the menu.
+    #     Inputs:
+    #         plate: object
+    #     """
+    #     self._menu.append(self,plate)
+
+    def add_menu(self, item):
+        """Method to add a plate or drink to the menu.
+        Inputs:
+            item: object
+        """
+        if isinstance(item, MenuItem):
+            self._menu.append(item)
